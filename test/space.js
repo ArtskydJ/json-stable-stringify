@@ -57,3 +57,10 @@ test('space parameter (same as native)', function (t) {
     var obj = { one: 1, two: { a: [2,3], b: 4 } };
     t.equal(stringify(obj, {space: '  '}), JSON.stringify(obj, null, '  '));
 });
+
+test('space parameter (same as native for empty objects and arrays)', function (t) {
+    t.plan(1);
+    // for this test, properties need to be in alphabetical order
+    var obj = { one: 1, two: { a: [2,3], b: 4, c: [], d: {} } };
+    t.equal(stringify(obj, {space: '  '}), JSON.stringify(obj, null, '  '));
+});

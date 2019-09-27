@@ -41,7 +41,7 @@ module.exports = function (obj, opts) {
                 var item = stringify(node, i, node[i], level+1) || json.stringify(null);
                 out.push(indent + space + item);
             }
-            return '[' + out.join(',') + indent + ']';
+            return '[' + out.join(',') + (out.length ? indent : '') + ']';
         }
         else {
             if (seen.indexOf(node) !== -1) {
@@ -65,7 +65,7 @@ module.exports = function (obj, opts) {
                 out.push(indent + space + keyValue);
             }
             seen.splice(seen.indexOf(node), 1);
-            return '{' + out.join(',') + indent + '}';
+            return '{' + out.join(',') + (out.length ? indent : '') + '}';
         }
     })({ '': obj }, '', obj, 0);
 };
